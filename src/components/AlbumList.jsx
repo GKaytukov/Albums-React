@@ -14,7 +14,7 @@ export default function AlbumList() {
         <main className='album-list'>
             {!albums
             ? <p>Loading...</p>
-            : albums.map(thisAlbum=> <AlbumCard thisAlbum={thisAlbum} />) 
+            : albums.map(thisAlbum=> <AlbumCard key={thisAlbum.albumId} thisAlbum={thisAlbum} />) 
             }
         </main>
     )
