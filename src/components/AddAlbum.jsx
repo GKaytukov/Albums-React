@@ -1,34 +1,34 @@
 import { useState } from "react"
 
-export default function AddAlbum({ setToogle,toogle }) {
+export default function AddAlbum({ setToogle, toogle }) { //It is passing setAlbums when we submit the forms 
     const [album, setAlbum] = useState('')
     const [artist, setArtist] = useState('')
     const [year, setYear] = useState(1970)
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault() 
         //Let's check to see that they entered all the data:
-        if(!album || !artist || !year) {
-            alert('Please enter all info')
+        if (!album || !artist || !year) { //Checking to see there is all data. 
+            alert('Please enter all info') //This is just a backup if the required does not work. 
             return
         }
-        const newAlbum = { artist, album, year}
-        fetch('https://albums-api-c8.web.app/albums', {
-            method: 'POST', 
+        const newAlbum = { artist, album, year } //Creating a new album with the 3 state variables, we are putting it together as a single object.
+        fetch('https://albums-api-gk.web.app/albums', { //This is a basic fetch to a .get request. We didn't a lot only a few lines.
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            }, 
-            body: JSON.stringify(newAlbum)
+                'Content-Type': 'application/json'//We need to put in objects, such as the method, we need to tell it is a post request, when we choose JSON it automatically for us the packages. We have to tell the in the headers that it is JSON. 
+            },
+            body: JSON.stringify(newAlbum)//We use JSON stringify it converts it in actual JSON but all into one string but if converted to a variable you can JSON.parse(msg). We send it JSON stringify to our API.
         })
-        .then(() => {
-            //assume it worked...
-            setToogle(!toogle)
-            setAlbum('')
-            setArtist('')
-            setYear(1970)
-        })
-        .catch(alert)
+            .then(() => {
+                //Assume it worked... If I don't get an error. We are sending a message to up to APP and down to AlbumList. Through props we are updating state at the same time. 
+                setToogle(!toogle) 
+                setAlbum('')
+                setArtist('')
+                setYear(1970)
+            })
+            .catch(alert)
     }
-    return (
+    return ( //Has 3 elements and a submit, when we hit this form, on each input we are taking control on the state, we are controlling the value. We are tracking them as they go, they are already in state for us. This whole function, we are trying to prevent advent, to reload the page. It is fixable with the .e format. We need to keep this old behavior. Old default behavior, prevent default is a new function. With react we want a single page application, if the page leaves we lose state and all the other information. 
         <section className="add-album">
             <h3>Add new Album</h3>
             <form onSubmit={handleSubmit}>
