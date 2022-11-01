@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function AddAlbum({ setToogle, toogle }) { //It is passing setAlbums when we submit the forms 
+export default function AddAlbum({ setToggle, toggle }) { //It is passing setAlbums when we submit the forms 
     const [album, setAlbum] = useState('')
     const [artist, setArtist] = useState('')
     const [year, setYear] = useState(1970)
@@ -21,7 +21,7 @@ export default function AddAlbum({ setToogle, toogle }) { //It is passing setAlb
         })
             .then(() => {
                 //Assume it worked... If I don't get an error. We are sending a message to up to APP and down to AlbumList. Through props we are updating state at the same time. 
-                setToogle(!toogle) 
+                setToggle(!toggle) 
                 setAlbum('')
                 setArtist('')
                 setYear(1970)
