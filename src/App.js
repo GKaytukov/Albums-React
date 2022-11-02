@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import AlbumList from './components/AlbumList';
 import AddAlbum from './components/AddAlbum';
-import './App.css';
+import './assets/master.css';
 
 function App() {
   const [toggle, setToggle] = useState(true) //When we want to share information, the AlbumList & the AddAlbum want to communicate to each other, so we will create a toogle switch. Toogle & setToogle is so that AlbumList and AddAlbum can talk to each other. 

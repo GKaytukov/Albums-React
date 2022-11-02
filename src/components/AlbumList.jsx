@@ -4,7 +4,7 @@ import AlbumCard from './AlbumCard'
 export default function AlbumList({toggle}) {//It's get toogle from APP, we have a state variable b/c we want 
     const [albums, setAlbums] = useState() //This is where I am getting the albums, after it gets the list, albumlist needs s
     useEffect(() => { //It's getting a list albums from the parent, APP has the state 
-    fetch('https://albums-api-gk.web.app/albums')
+    fetch(process.env.REACT_APP_ENDPOINT+'/albums')
     .then(response => response.json()) //Now, the response here, I say here are the new albums then I get back some data 
     .then(setAlbums)
     .catch(alert)
